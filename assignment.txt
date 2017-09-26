@@ -1,0 +1,48 @@
+1. all_survey_data
+
+SELECT *
+FROM surveys, plots, species;
+
+2. spectabilis_population_data
+
+SELECT month, day, year, sex
+FROM surveys
+WHERE species_id = 'DS';
+
+   spectabilis_population_data_males
+
+SELECT month, day, year, sex
+FROM surveys
+WHERE species_id = 'DS' AND sex = 'M';
+
+    spectabilis_population_data_females
+
+
+SELECT month, day, year, sex
+FROM surveys
+WHERE species_id = 'DS' AND sex = 'F';
+
+3. 100_largest_individuals
+
+SELECT species_id, year, weight
+FROM surveys
+ORDER BY weight, hindfoot_length, year DESC
+LIMIT 100;
+
+4. dates_sampled
+
+SELECT DISTINCT month, day, year
+FROM surveys;
+
+5. no_missing_data
+
+SELECT year, month, day, species_id, weight
+FROM surveys
+WHERE year IS NOT NULL AND month IS NOT NULL AND day IS NOT NULL AND weight IS NOT NULL;
+
+6. dates_with_dipodomys_spectabilis
+
+SELECT DISTINCT month, day, year, species_id
+FROM surveys
+WHERE species_id = 'DS'
+ ;
